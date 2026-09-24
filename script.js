@@ -17,14 +17,18 @@ btn.addEventListener("click", (event) => {
     }
 });
 
-const exist = document.getElementById("existing");
-
-exist.style.display = "none";
-
 if (localStorage.getItem("username") && localStorage.getItem("password")) {
-    exist.style.display = "block";
+
+    const exist = document.createElement("button");
+
+    exist.id = "existing";
+    exist.type = "button";
+    exist.textContent = "Login as existing user";
+
+    document.body.appendChild(exist);
+
+    exist.addEventListener("click", () => {
+        alert(`Logged in as ${localStorage.getItem("username")}`);
+    });
 }
 
-exist.addEventListener("click", () => {
-    alert(`Logged in as ${localStorage.getItem("username")}`);
-});
